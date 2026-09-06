@@ -1,18 +1,56 @@
-const openButton = document.getElementById("openButton");
-const welcome = document.getElementById("welcome");
-const letterPage = document.getElementById("letterPage");
+document.addEventListener("DOMContentLoaded", function () {
 
-const paper = document.getElementById("paper");
-const penButton = document.getElementById("penButton");
-const clickText = document.getElementById("clickText");
-const letterText = document.getElementById("letterText");
+    const app = document.getElementById("app");
 
 
-/* =========================
-   MESSAGE
-========================= */
+    /*
+    ========================================
+    CRÉATION DE LA FEUILLE
+    ========================================
+    */
 
-const message = `Joyeux anniversaire mon cœur ❤️
+    const paper = document.createElement("div");
+
+    paper.className = "paper";
+
+
+    /*
+    ========================================
+    CONTENU DE LA FEUILLE
+    ========================================
+    */
+
+    const content = document.createElement("div");
+
+    content.className = "paper-content";
+
+
+    const title = document.createElement("h1");
+
+    title.textContent = "Une lettre pour toi ❤️";
+
+
+    const text = document.createElement("p");
+
+    text.textContent = "";
+
+
+    content.appendChild(title);
+
+    content.appendChild(text);
+
+    paper.appendChild(content);
+
+    app.appendChild(paper);
+
+
+    /*
+    ========================================
+    MESSAGE
+    ========================================
+    */
+
+    const message = `Joyeux anniversaire mon cœur ❤️
 
 Tu viens d’avoir 18 ans… t’es grande maintenant. 🥹
 
@@ -27,79 +65,88 @@ J’espère vraiment que tu vas apprécier cette petite surprise…
 Parce que ce n’est que le début. 🍒❤️`;
 
 
-/* =========================
-   ACCUEIL → LETTRE
-========================= */
+    /*
+    ========================================
+    INSTRUCTION
+    ========================================
+    */
 
-openButton.addEventListener("click", function () {
+    const instruction = document.createElement("div");
 
-    welcome.style.animation = "fadeOut 0.8s ease forwards";
+    instruction.className = "instruction";
 
-    setTimeout(function () {
+    instruction.textContent = "Clique sur la lettre 💌";
 
-        welcome.style.display = "none";
+    app.appendChild(instruction);
 
-        letterPage.classList.remove("hidden");
 
-    }, 800);
+    /*
+    ========================================
+    CLIC SUR LA FEUILLE
+    ========================================
+    */
+
+    paper.addEventListener("click", function () {
+
+        instruction.textContent = "Clique sur le stylo 🖊️";
+
+
+        /*
+        Création du bouton stylo
+        */
+
+        const pen = document.createElement("button");
+
+        pen.className = "pen";
+
+        pen.textContent = "🖊️";
+
+        app.appendChild(pen);
+
+
+        /*
+        ========================================
+        CLIC SUR LE STYLO
+        ========================================
+        */
+
+        pen.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            pen.remove();
+
+            instruction.textContent = "";
+
+            text.textContent = "";
+
+            let position = 0;
+
+
+            /*
+            ========================================
+            ÉCRITURE PROGRESSIVE
+            ========================================
+            */
+
+            function writeText() {
+
+                if (position < message.length) {
+
+                    text.textContent += message[position];
+
+                    position++;
+
+                    setTimeout(writeText, 35);
+
+                }
+
+            }
+
+            writeText();
+
+        });
+
+    });
 
 });
-
-
-/* =========================
-   CLIC SUR LA FEUILLE
-========================= */
-
-paper.addEventListener("click", function () {
-
-    penButton.classList.remove("hidden");
-
-    clickText.textContent = "Clique sur le stylo 🖊️";
-
-});
-
-
-/* =========================
-   CLIC SUR LE STYLO
-========================= */
-
-penButton.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    penButton.classList.add("hidden");
-
-    clickText.textContent = "";
-
-    writeLetter();
-
-});
-
-
-/* =========================
-   ÉCRITURE
-========================= */
-
-function writeLetter() {
-
-    let index = 0;
-
-    letterText.textContent = "";
-
-    function typeWriter() {
-
-        if (index < message.length) {
-
-            letterText.textContent += message[index];
-
-            index++;
-
-            setTimeout(typeWriter, 40);
-
-        }
-
-    }
-
-    typeWriter();
-
-}
