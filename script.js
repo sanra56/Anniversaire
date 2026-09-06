@@ -1,54 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const app = document.getElementById("app");
+    const paper = document.getElementById("paper");
+    const pen = document.getElementById("pen");
+    const instruction = document.getElementById("instruction");
+    const letterText = document.getElementById("letter-text");
 
-
-    /*
-    ========================================
-    CRÉATION DE LA FEUILLE
-    ========================================
-    */
-
-    const paper = document.createElement("div");
-
-    paper.className = "paper";
-
-
-    /*
-    ========================================
-    CONTENU DE LA FEUILLE
-    ========================================
-    */
-
-    const content = document.createElement("div");
-
-    content.className = "paper-content";
-
-
-    const title = document.createElement("h1");
-
-    title.textContent = "Une lettre pour toi ❤️";
-
-
-    const text = document.createElement("p");
-
-    text.textContent = "";
-
-
-    content.appendChild(title);
-
-    content.appendChild(text);
-
-    paper.appendChild(content);
-
-    app.appendChild(paper);
-
-
-    /*
-    ========================================
-    MESSAGE
-    ========================================
-    */
 
     const message = `Joyeux anniversaire mon cœur ❤️
 
@@ -65,87 +21,63 @@ J’espère vraiment que tu vas apprécier cette petite surprise…
 Parce que ce n’est que le début. 🍒❤️`;
 
 
-    /*
-    ========================================
-    INSTRUCTION
-    ========================================
-    */
-
-    const instruction = document.createElement("div");
-
-    instruction.className = "instruction";
-
-    instruction.textContent = "Clique sur la lettre 💌";
-
-    app.appendChild(instruction);
+    let paperClicked = false;
+    let writing = false;
 
 
-    /*
-    ========================================
-    CLIC SUR LA FEUILLE
-    ========================================
-    */
+    /* CLIC SUR LA FEUILLE */
 
     paper.addEventListener("click", function () {
 
+        if (paperClicked) {
+            return;
+        }
+
+        paperClicked = true;
+
         instruction.textContent = "Clique sur le stylo 🖊️";
 
-
-        /*
-        Création du bouton stylo
-        */
-
-        const pen = document.createElement("button");
-
-        pen.className = "pen";
-
-        pen.textContent = "🖊️";
-
-        app.appendChild(pen);
+        pen.classList.remove("hidden");
+    });
 
 
-        /*
-        ========================================
-        CLIC SUR LE STYLO
-        ========================================
-        */
+    /* CLIC SUR LE STYLO */
 
-        pen.addEventListener("click", function (event) {
+    pen.addEventListener("click", function (event) {
 
-            event.stopPropagation();
+        event.stopPropagation();
 
-            pen.remove();
+        if (writing) {
+            return;
+        }
 
-            instruction.textContent = "";
+        writing = true;
 
-            text.textContent = "";
+        pen.classList.add("hidden");
 
-            let position = 0;
+        instruction.textContent = "";
+
+        let index = 0;
 
 
-            /*
-            ========================================
-            ÉCRITURE PROGRESSIVE
-            ========================================
-            */
+        /* ÉCRITURE DE LA LETTRE */
 
-            function writeText() {
+        function writeLetter() {
 
-                if (position < message.length) {
+            if (index < message.length) {
 
-                    text.textContent += message[position];
+                letterText.textContent += message[index];
 
-                    position++;
+                index++;
 
-                    setTimeout(writeText, 35);
-
-                }
+                setTimeout(writeLetter, 40);
 
             }
 
-            writeText();
+        }
 
-        });
+
+        writeLetter();
 
     });
 
