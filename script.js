@@ -1,20 +1,15 @@
 const openButton = document.getElementById("openButton");
-
 const welcome = document.getElementById("welcome");
-
 const letterPage = document.getElementById("letterPage");
 
 const paper = document.getElementById("paper");
-
 const penButton = document.getElementById("penButton");
-
 const clickText = document.getElementById("clickText");
-
 const letterText = document.getElementById("letterText");
 
 
 /* =========================
-   MESSAGE DE LA LETTRE
+   MESSAGE
 ========================= */
 
 const message = `Joyeux anniversaire mon cœur ❤️
@@ -33,14 +28,12 @@ Parce que ce n’est que le début. 🍒❤️`;
 
 
 /* =========================
-   BOUTON DÉCOUVRIR
+   ACCUEIL → LETTRE
 ========================= */
 
 openButton.addEventListener("click", function () {
 
-    welcome.style.animation =
-        "fadeOut 0.8s ease forwards";
-
+    welcome.style.animation = "fadeOut 0.8s ease forwards";
 
     setTimeout(function () {
 
@@ -54,15 +47,14 @@ openButton.addEventListener("click", function () {
 
 
 /* =========================
-   CLIC SUR LA LETTRE
+   CLIC SUR LA FEUILLE
 ========================= */
 
 paper.addEventListener("click", function () {
 
     penButton.classList.remove("hidden");
 
-    clickText.textContent =
-        "Clique sur le stylo 🖊️";
+    clickText.textContent = "Clique sur le stylo 🖊️";
 
 });
 
@@ -85,32 +77,29 @@ penButton.addEventListener("click", function (event) {
 
 
 /* =========================
-   ÉCRIRE LA LETTRE
+   ÉCRITURE
 ========================= */
 
 function writeLetter() {
 
     let index = 0;
 
-    const speed = 35;
+    letterText.textContent = "";
 
-
-    function type() {
+    function typeWriter() {
 
         if (index < message.length) {
 
-            letterText.textContent +=
-                message.charAt(index);
+            letterText.textContent += message[index];
 
             index++;
 
-            setTimeout(type, speed);
+            setTimeout(typeWriter, 40);
 
         }
 
     }
 
-
-    type();
+    typeWriter();
 
 }
