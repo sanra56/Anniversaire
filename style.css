@@ -238,7 +238,7 @@ button:active {
         transform 0.9s ease,
         top 0.9s ease;
 
-    z-index: 2;
+    z-index: 0;
 
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.12);
@@ -347,11 +347,9 @@ button:active {
     z-index: 4;
 }
 
-
 /* =========================
    OUVERTURE EN 3 CLICS
 ========================= */
-
 
 /* 1er clic */
 
@@ -360,10 +358,8 @@ button:active {
 }
 
 .envelope-container.step-1 .letter {
-    top: -20px;
-
-    transform: translateY(-5px);
-
+    top: 0;
+    transform: translateY(-10px);
     z-index: 5;
 }
 
@@ -375,10 +371,8 @@ button:active {
 }
 
 .envelope-container.step-2 .letter {
-    top: -60px;
-
+    top: -55px;
     transform: translateY(-10px);
-
     z-index: 5;
 }
 
@@ -391,13 +385,9 @@ button:active {
 
 .envelope-container.step-3 .letter {
     top: -105px;
-
     transform: translateY(-20px);
-
     z-index: 5;
 }
-
-
 /* =========================
    TEXTE SOUS L'ENVELOPPE
 ========================= */
