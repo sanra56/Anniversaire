@@ -7,16 +7,30 @@
 
     <title>Pour mon ptit Coeur ❤️</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- PAGE D'ACCUEIL -->
+    <!-- COEURS EN ARRIÈRE-PLAN -->
 
-    <main id="welcome">
+    <div class="background-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
 
-        <div class="heart">♥</div>
+
+    <!-- =========================
+         PAGE D'ACCUEIL
+    ========================== -->
+
+    <main class="welcome" id="welcome">
+
+        <div class="small-heart">♥</div>
 
         <h1>
             Pour mon <span>ptit Coeur</span> ❤️
@@ -27,41 +41,51 @@
             j’ai préparé tout ça rien que pour toi... 🥰
         </p>
 
-        <button id="discover">
+        <button id="openButton">
             Découvrir 🍒
         </button>
 
     </main>
 
 
-    <!-- PAGE DE LA LETTRE -->
+    <!-- =========================
+         PAGE DE LA LETTRE
+    ========================== -->
 
-    <main id="letter-page" class="hidden">
+    <main class="letter-page hidden" id="letterPage">
 
-        <div id="paper" class="paper">
+        <div class="paper" id="paper">
 
             <div class="paper-content">
 
                 <h2>Une lettre pour toi ❤️</h2>
 
-                <div id="letter-text"></div>
+                <div id="letterText"></div>
 
             </div>
 
         </div>
 
-        <button id="pen" class="pen hidden">
+
+        <!-- STYLO -->
+
+        <button
+            class="pen-button hidden"
+            id="penButton">
             🖊️
         </button>
 
-        <p id="instruction">
+
+        <p
+            class="click-text"
+            id="clickText">
             Clique sur la lettre 💌
         </p>
 
     </main>
 
 
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
