@@ -12,6 +12,8 @@
 
 <body>
 
+    <!-- COEURS EN ARRIÈRE-PLAN -->
+
     <div class="background-hearts">
         <span>♡</span>
         <span>♡</span>
@@ -22,7 +24,9 @@
     </div>
 
 
-    <!-- ACCUEIL -->
+    <!-- =========================
+         ACCUEIL
+    ========================== -->
 
     <main class="welcome" id="welcome">
 
@@ -44,68 +48,44 @@
     </main>
 
 
-    <!-- PAGE DE L'ENVELOPPE -->
+    <!-- =========================
+         PAGE DE LA LETTRE
+    ========================== -->
 
     <main class="letter-page hidden" id="letterPage">
 
-        <p class="little-text">
-            Une petite chose pour commencer...
-        </p>
+        <div class="paper" id="paper">
 
+            <div class="paper-content">
 
-        <div class="envelope-container" id="envelope">
+                <h2>Pour Clara ❤️</h2>
 
-            <div class="envelope">
-
-                <div class="envelope-back"></div>
-
-            <div class="letter">
-
-    <div class="letter-content">
-
-        <h2>Pour Clara ❤️</h2>
-
-        <p>
-            Joyeux anniversaire mon cœur ❤️
-        </p>
-
-        <p>
-            Tu viens d’avoir 18 ans… t’es grande maintenant. 🥹
-            Tu grandis super vite, mais tu resteras mon gosse pour l’éternité. ❤️
-        </p>
-
-        <p>
-            Je suis énormément fier de toi et de la personne que tu es devenue.
-        </p>
-
-        <p>
-            C’est pour ça que j’ai souhaité te le dire d’une manière un peu spéciale,
-            avec ce site totalement dédié à toi, rien que pour toi.
-        </p>
-
-        <p>
-            J’espère vraiment que tu vas apprécier cette petite surprise…
-            parce que ce n’est que le début. 🍒❤️
-        </p>
-
-    </div>
-
-</div>
-
-                <div class="envelope-front"></div>
-
-                <div class="envelope-flap"></div>
+                <div id="letterText"></div>
 
             </div>
 
         </div>
 
 
-        <p class="click-text">
-            Clique sur l'enveloppe 💌
+        <!-- STYLO -->
+
+        <button class="pen-button hidden" id="penButton">
+            🖊️
+        </button>
+
+
+        <p class="click-text" id="clickText">
+            Clique sur la lettre 💌
         </p>
 
     </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
 
 
     <script src="script.js"></script>
