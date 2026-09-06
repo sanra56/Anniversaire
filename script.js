@@ -1,25 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
+const openButton = document.getElementById("openButton");
 
-    const discover = document.getElementById("discover");
+const welcome = document.getElementById("welcome");
 
-    const welcome = document.getElementById("welcome");
+const letterPage = document.getElementById("letterPage");
 
-    const letterPage = document.getElementById("letter-page");
+const paper = document.getElementById("paper");
 
-    const paper = document.getElementById("paper");
+const penButton = document.getElementById("penButton");
 
-    const pen = document.getElementById("pen");
+const clickText = document.getElementById("clickText");
 
-    const instruction = document.getElementById("instruction");
-
-    const letterText = document.getElementById("letter-text");
+const letterText = document.getElementById("letterText");
 
 
-    /* =========================
-       MESSAGE
-    ========================= */
+/* =========================
+   MESSAGE DE LA LETTRE
+========================= */
 
-    const message = `Joyeux anniversaire mon cœur ❤️
+const message = `Joyeux anniversaire mon cœur ❤️
 
 Tu viens d’avoir 18 ans… t’es grande maintenant. 🥹
 
@@ -34,68 +32,85 @@ J’espère vraiment que tu vas apprécier cette petite surprise…
 Parce que ce n’est que le début. 🍒❤️`;
 
 
-    /* =========================
-       ACCUEIL → LETTRE
-    ========================= */
+/* =========================
+   BOUTON DÉCOUVRIR
+========================= */
 
-    discover.addEventListener("click", function () {
+openButton.addEventListener("click", function () {
 
-        welcome.classList.add("hidden");
+    welcome.style.animation =
+        "fadeOut 0.8s ease forwards";
+
+
+    setTimeout(function () {
+
+        welcome.style.display = "none";
 
         letterPage.classList.remove("hidden");
 
-    });
+    }, 800);
+
+});
 
 
-    /* =========================
-       CLIC SUR LA FEUILLE
-    ========================= */
+/* =========================
+   CLIC SUR LA LETTRE
+========================= */
 
-    paper.addEventListener("click", function () {
+paper.addEventListener("click", function () {
 
-        pen.classList.remove("hidden");
+    penButton.classList.remove("hidden");
 
-        instruction.textContent =
-            "Clique sur le stylo 🖊️";
+    clickText.textContent =
+        "Clique sur le stylo 🖊️";
 
-    });
-
-
-    /* =========================
-       CLIC SUR LE STYLO
-    ========================= */
-
-    pen.addEventListener("click", function (event) {
-
-        event.stopPropagation();
-
-        pen.classList.add("hidden");
-
-        instruction.textContent = "";
-
-        let index = 0;
+});
 
 
-        /* =========================
-           ÉCRITURE PROGRESSIVE
-        ========================= */
+/* =========================
+   CLIC SUR LE STYLO
+========================= */
 
-        function writeLetter() {
+penButton.addEventListener("click", function (event) {
 
-            if (index < message.length) {
+    event.stopPropagation();
 
-                letterText.textContent += message[index];
+    penButton.classList.add("hidden");
 
-                index++;
+    clickText.textContent = "";
 
-                setTimeout(writeLetter, 40);
+    writeLetter();
 
-            }
+});
+
+
+/* =========================
+   ÉCRIRE LA LETTRE
+========================= */
+
+function writeLetter() {
+
+    let index = 0;
+
+    const speed = 35;
+
+
+    function type() {
+
+        if (index < message.length) {
+
+            letterText.textContent +=
+                message.charAt(index);
+
+            index++;
+
+            setTimeout(type, speed);
 
         }
 
-        writeLetter();
+    }
 
-    });
 
-});
+    type();
+
+}
