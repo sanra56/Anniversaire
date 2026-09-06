@@ -1,13 +1,7 @@
 const openButton = document.getElementById("openButton");
-
 const welcome = document.getElementById("welcome");
-
 const letterPage = document.getElementById("letterPage");
-
 const envelope = document.getElementById("envelope");
-
-
-/* BOUTON "DÉCOUVRIR" */
 
 openButton.addEventListener("click", function () {
 
@@ -16,22 +10,16 @@ openButton.addEventListener("click", function () {
     setTimeout(function () {
 
         welcome.style.display = "none";
-
         letterPage.classList.remove("hidden");
 
     }, 700);
 
 });
 
-
-/* OUVRIR L'ENVELOPPE */
-
 envelope.addEventListener("click", function () {
 
     if (!envelope.classList.contains("open")) {
-
         envelope.classList.add("open");
-
     }
 
 });
