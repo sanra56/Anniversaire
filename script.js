@@ -3,6 +3,8 @@ const welcome = document.getElementById("welcome");
 const letterPage = document.getElementById("letterPage");
 const envelope = document.getElementById("envelope");
 
+let envelopeStep = 0;
+
 
 /* =========================
    BOUTON DÉCOUVRIR
@@ -24,11 +26,25 @@ openButton.addEventListener("click", function () {
 
 
 /* =========================
-   OUVRIR L'ENVELOPPE
+   OUVERTURE EN 3 CLICS
 ========================= */
 
 envelope.addEventListener("click", function () {
 
-    envelope.classList.add("open");
+    if (envelopeStep >= 3) {
+        return;
+    }
+
+    envelopeStep++;
+
+    envelope.classList.remove(
+        "step-1",
+        "step-2",
+        "step-3"
+    );
+
+    envelope.classList.add(
+        "step-" + envelopeStep
+    );
 
 });
