@@ -6,74 +6,45 @@
 
 body {
     min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #7d2538,
-            #4b1221 55%,
-            #240810
-        );
-
+    background: #4b1221;
     font-family: Georgia, "Times New Roman", serif;
-
-    overflow: hidden;
-
-    color: white;
 }
-
-
-/* =========================
-   PAGE
-========================= */
 
 #app {
     min-height: 100vh;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
+
+    position: relative;
 }
 
-
-/* =========================
-   FEUILLE
-========================= */
+/* FEUILLE */
 
 .paper {
     width: 85%;
     max-width: 600px;
-
     height: 70vh;
 
     background: #fffaf5;
 
-    border-radius: 5px;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.45);
-
     padding: 40px;
 
-    color: #4b1221;
+    border-radius: 5px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 
     cursor: pointer;
 
-    animation: apparition 1s ease;
-
     position: relative;
-
-    z-index: 10;
+    z-index: 5;
 }
 
-
-/* =========================
-   CONTENU
-========================= */
+/* CONTENU */
 
 .paper-content {
+    width: 100%;
     height: 100%;
 
     overflow-y: auto;
@@ -82,6 +53,8 @@ body {
 }
 
 .paper-content h1 {
+    color: #4b1221;
+
     text-align: center;
 
     font-size: 30px;
@@ -91,7 +64,9 @@ body {
     margin-bottom: 30px;
 }
 
-.paper-content p {
+#letter-text {
+    color: #5a2531;
+
     font-size: 18px;
 
     line-height: 1.8;
@@ -99,39 +74,32 @@ body {
     white-space: pre-line;
 }
 
+/* INSTRUCTION */
 
-/* =========================
-   TEXTE EN BAS
-========================= */
-
-.instruction {
+#instruction {
     position: fixed;
 
-    bottom: 35px;
+    bottom: 30px;
 
     left: 0;
     right: 0;
 
     text-align: center;
 
-    color: #fff;
+    color: white;
 
     font-size: 17px;
 
-    z-index: 20;
+    z-index: 10;
 }
 
-
-/* =========================
-   STYLO
-========================= */
+/* STYLO */
 
 .pen {
     position: fixed;
 
     right: 10%;
-
-    bottom: 12%;
+    bottom: 15%;
 
     width: 70px;
     height: 70px;
@@ -146,47 +114,24 @@ body {
 
     cursor: pointer;
 
-    z-index: 30;
-
-    animation: apparition 0.7s ease;
+    z-index: 20;
 }
 
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes apparition {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.8)
-            translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
+.pen:hover {
+    transform: scale(1.1);
 }
 
+.hidden {
+    display: none !important;
+}
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
     .paper {
         width: 88%;
-
         height: 68vh;
-
         padding: 25px;
     }
 
@@ -194,15 +139,12 @@ body {
         font-size: 25px;
     }
 
-    .paper-content p {
+    #letter-text {
         font-size: 16px;
-
-        line-height: 1.7;
     }
 
     .pen {
         right: 7%;
-
-        bottom: 10%;
+        bottom: 12%;
     }
 }
