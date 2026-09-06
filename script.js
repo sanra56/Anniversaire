@@ -1,10 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const discover = document.getElementById("discover");
+
+    const welcome = document.getElementById("welcome");
+
+    const letterPage = document.getElementById("letter-page");
+
     const paper = document.getElementById("paper");
+
     const pen = document.getElementById("pen");
+
     const instruction = document.getElementById("instruction");
+
     const letterText = document.getElementById("letter-text");
 
+
+    /* =========================
+       MESSAGE
+    ========================= */
 
     const message = `Joyeux anniversaire mon cœur ❤️
 
@@ -21,37 +34,40 @@ J’espère vraiment que tu vas apprécier cette petite surprise…
 Parce que ce n’est que le début. 🍒❤️`;
 
 
-    let paperClicked = false;
-    let writing = false;
+    /* =========================
+       ACCUEIL → LETTRE
+    ========================= */
 
+    discover.addEventListener("click", function () {
 
-    /* CLIC SUR LA FEUILLE */
+        welcome.classList.add("hidden");
 
-    paper.addEventListener("click", function () {
+        letterPage.classList.remove("hidden");
 
-        if (paperClicked) {
-            return;
-        }
-
-        paperClicked = true;
-
-        instruction.textContent = "Clique sur le stylo 🖊️";
-
-        pen.classList.remove("hidden");
     });
 
 
-    /* CLIC SUR LE STYLO */
+    /* =========================
+       CLIC SUR LA FEUILLE
+    ========================= */
+
+    paper.addEventListener("click", function () {
+
+        pen.classList.remove("hidden");
+
+        instruction.textContent =
+            "Clique sur le stylo 🖊️";
+
+    });
+
+
+    /* =========================
+       CLIC SUR LE STYLO
+    ========================= */
 
     pen.addEventListener("click", function (event) {
 
         event.stopPropagation();
-
-        if (writing) {
-            return;
-        }
-
-        writing = true;
 
         pen.classList.add("hidden");
 
@@ -60,7 +76,9 @@ Parce que ce n’est que le début. 🍒❤️`;
         let index = 0;
 
 
-        /* ÉCRITURE DE LA LETTRE */
+        /* =========================
+           ÉCRITURE PROGRESSIVE
+        ========================= */
 
         function writeLetter() {
 
@@ -75,7 +93,6 @@ Parce que ce n’est que le début. 🍒❤️`;
             }
 
         }
-
 
         writeLetter();
 
