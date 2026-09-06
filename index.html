@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pour mon ptit Coeur ❤️</title>
+
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <div id="app">
+    <!-- PAGE D'ACCUEIL -->
+
+    <main id="welcome">
+
+        <div class="heart">♥</div>
+
+        <h1>
+            Pour mon <span>ptit Coeur</span> ❤️
+        </h1>
+
+        <p>
+            J’espère que ça va te plaire,<br>
+            j’ai préparé tout ça rien que pour toi... 🥰
+        </p>
+
+        <button id="discover">
+            Découvrir 🍒
+        </button>
+
+    </main>
+
+
+    <!-- PAGE DE LA LETTRE -->
+
+    <main id="letter-page" class="hidden">
 
         <div id="paper" class="paper">
 
             <div class="paper-content">
 
-                <h1>Une lettre pour toi ❤️</h1>
+                <h2>Une lettre pour toi ❤️</h2>
 
                 <div id="letter-text"></div>
 
@@ -23,17 +50,19 @@
 
         </div>
 
-        <p id="instruction">
-            Clique sur la lettre 💌
-        </p>
-
         <button id="pen" class="pen hidden">
             🖊️
         </button>
 
-    </div>
+        <p id="instruction">
+            Clique sur la lettre 💌
+        </p>
+
+    </main>
+
 
     <script src="./script.js"></script>
 
 </body>
+
 </html>
