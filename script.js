@@ -26,7 +26,7 @@ openButton.addEventListener("click", function () {
 
 
 /* =========================
-   OUVERTURE EN 3 CLICS
+   OUVERTURE DE L'ENVELOPPE
 ========================= */
 
 envelope.addEventListener("click", function () {
@@ -46,5 +46,18 @@ envelope.addEventListener("click", function () {
     envelope.classList.add(
         "step-" + envelopeStep
     );
+
+
+    /* Animation finale après le 3e clic */
+
+    if (envelopeStep === 3) {
+
+        setTimeout(function () {
+
+            envelope.classList.add("final");
+
+        }, 1000);
+
+    }
 
 });
