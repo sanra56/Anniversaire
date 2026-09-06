@@ -351,33 +351,33 @@ button:active {
    OUVERTURE EN 3 CLICS
 ========================= */
 
-/* 1er clic */
+/* 1er clic : seul le rabat s'ouvre */
 
 .envelope-container.step-1 .envelope-flap {
-    transform: rotateX(45deg);
+    transform: rotateX(180deg);
 }
 
 .envelope-container.step-1 .letter {
-    top: 0;
-    transform: translateY(-10px);
-    z-index: 5;
+    top: 10px;
+    transform: translateY(0);
+    z-index: 0;
 }
 
 
-/* 2e clic */
+/* 2e clic : la lettre commence à sortir */
 
 .envelope-container.step-2 .envelope-flap {
-    transform: rotateX(110deg);
+    transform: rotateX(180deg);
 }
 
 .envelope-container.step-2 .letter {
-    top: -55px;
-    transform: translateY(-10px);
+    top: -45px;
+    transform: translateY(0);
     z-index: 5;
 }
 
 
-/* 3e clic */
+/* 3e clic : la lettre sort complètement */
 
 .envelope-container.step-3 .envelope-flap {
     transform: rotateX(180deg);
@@ -385,7 +385,7 @@ button:active {
 
 .envelope-container.step-3 .letter {
     top: -105px;
-    transform: translateY(-20px);
+    transform: translateY(0);
     z-index: 5;
 }
 /* =========================
