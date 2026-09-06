@@ -1,3 +1,7 @@
+/* =========================
+   BASE
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,66 +10,229 @@
 
 body {
     min-height: 100vh;
-    background: #4b1221;
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-#app {
-    min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    position: relative;
+    overflow: hidden;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #fff4f0;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #7d2538 0%,
+            #4b1221 45%,
+            #240810 100%
+        );
 }
 
-/* FEUILLE */
+
+/* =========================
+   ACCUEIL
+========================= */
+
+.welcome {
+    position: relative;
+
+    width: 90%;
+    max-width: 700px;
+
+    padding: 70px 35px;
+
+    text-align: center;
+
+    z-index: 2;
+
+    animation: appear 1.5s ease;
+}
+
+.small-heart {
+    margin-bottom: 25px;
+
+    font-size: 45px;
+
+    color: #e8b6a9;
+
+    animation: heartbeat 2s infinite;
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 68px);
+
+    font-weight: normal;
+
+    letter-spacing: 1px;
+
+    line-height: 1.15;
+}
+
+h1 span {
+    color: #e8b6a9;
+}
+
+.welcome p {
+    margin-top: 25px;
+
+    font-size: clamp(17px, 3vw, 21px);
+
+    line-height: 1.7;
+
+    color: #f6deda;
+}
+
+
+/* =========================
+   BOUTONS
+========================= */
+
+button {
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+#openButton {
+    margin-top: 40px;
+
+    padding: 16px 34px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 18px;
+
+    backdrop-filter: blur(8px);
+
+    transition: 0.3s ease;
+}
+
+#openButton:hover {
+    transform: scale(1.08);
+
+    background: rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+        0 0 30px rgba(232, 182, 169, 0.25);
+}
+
+#openButton:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   PAGE DE LA LETTRE
+========================= */
+
+.letter-page {
+    position: absolute;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 5;
+
+    animation: pageAppear 1s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   FEUILLE
+========================= */
 
 .paper {
     width: 85%;
-    max-width: 600px;
-    height: 70vh;
+    max-width: 550px;
 
-    background: #fffaf5;
+    height: 65vh;
+    max-height: 650px;
 
-    padding: 40px;
+    padding: 35px;
 
-    border-radius: 5px;
+    background: #fff8f3;
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
 
     cursor: pointer;
 
-    position: relative;
-    z-index: 5;
+    transform: scale(0.8);
+
+    opacity: 0;
+
+    animation: paperAppear 1s ease forwards;
 }
 
-/* CONTENU */
+
+/* =========================
+   CONTENU DE LA LETTRE
+========================= */
 
 .paper-content {
-    width: 100%;
     height: 100%;
 
     overflow-y: auto;
 
     padding-right: 10px;
+
+    text-align: left;
 }
 
-.paper-content h1 {
-    color: #4b1221;
+.paper-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.paper-content::-webkit-scrollbar-thumb {
+    background: #d89b91;
+
+    border-radius: 10px;
+}
+
+
+/* TITRE */
+
+.paper h2 {
+    margin-bottom: 25px;
 
     text-align: center;
 
-    font-size: 30px;
+    font-size: 28px;
 
     font-weight: normal;
 
-    margin-bottom: 30px;
+    color: #4b1221;
 }
 
-#letter-text {
+
+/* TEXTE */
+
+#letterText {
     color: #5a2531;
+
+    font-family: Georgia, "Times New Roman", serif;
 
     font-size: 18px;
 
@@ -74,77 +241,255 @@ body {
     white-space: pre-line;
 }
 
-/* INSTRUCTION */
 
-#instruction {
-    position: fixed;
+/* =========================
+   STYLO
+========================= */
 
-    bottom: 30px;
+.pen-button {
+    position: absolute;
 
-    left: 0;
-    right: 0;
+    right: 15%;
 
-    text-align: center;
+    bottom: 12%;
 
-    color: white;
-
-    font-size: 17px;
-
-    z-index: 10;
-}
-
-/* STYLO */
-
-.pen {
-    position: fixed;
-
-    right: 10%;
-    bottom: 15%;
-
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
 
     border: none;
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
 
     font-size: 35px;
 
     cursor: pointer;
 
-    z-index: 20;
+    animation: penAppear 0.8s ease forwards;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
 }
 
-.pen:hover {
-    transform: scale(1.1);
+.pen-button:hover {
+    transform: scale(1.15) rotate(-10deg);
+
+    background: rgba(255, 255, 255, 0.25);
 }
 
-.hidden {
-    display: none !important;
+.pen-button:active {
+    transform: scale(0.95);
 }
 
-/* MOBILE */
+
+/* =========================
+   TEXTE D'INSTRUCTION
+========================= */
+
+.click-text {
+    margin-top: 25px;
+
+    color: rgba(255, 244, 240, 0.8);
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   COEURS
+========================= */
+
+.background-hearts span {
+    position: absolute;
+
+    bottom: -50px;
+
+    color: rgba(255, 220, 215, 0.18);
+
+    font-size: 25px;
+
+    animation: floatUp linear infinite;
+
+    z-index: 1;
+}
+
+.background-hearts span:nth-child(1) {
+    left: 10%;
+    animation-duration: 9s;
+}
+
+.background-hearts span:nth-child(2) {
+    left: 25%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.background-hearts span:nth-child(3) {
+    left: 43%;
+    animation-duration: 10s;
+    animation-delay: 4s;
+}
+
+.background-hearts span:nth-child(4) {
+    left: 62%;
+    animation-duration: 14s;
+    animation-delay: 1s;
+}
+
+.background-hearts span:nth-child(5) {
+    left: 78%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+
+.background-hearts span:nth-child(6) {
+    left: 90%;
+    animation-duration: 13s;
+    animation-delay: 5s;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeOut {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes paperAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+
+@keyframes penAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotate(-30deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+
+@keyframes floatUp {
+
+    from {
+        transform: translateY(0) rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(25deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
     .paper {
         width: 88%;
-        height: 68vh;
+
+        height: 65vh;
+
         padding: 25px;
     }
 
-    .paper-content h1 {
-        font-size: 25px;
+    .paper h2 {
+        font-size: 24px;
     }
 
-    #letter-text {
+    #letterText {
         font-size: 16px;
+
+        line-height: 1.7;
     }
 
-    .pen {
-        right: 7%;
-        bottom: 12%;
+    .pen-button {
+        right: 8%;
+
+        bottom: 10%;
     }
 }
