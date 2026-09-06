@@ -212,7 +212,6 @@ button:active {
     z-index: 1;
 }
 
-
 /* =========================
    LETTRE
 ========================= */
@@ -224,7 +223,9 @@ button:active {
     height: 180px;
 
     left: 6%;
-    top: 10px;
+
+    /* Lettre cachée dans l'enveloppe */
+    top: 100px;
 
     padding: 20px;
 
@@ -235,10 +236,12 @@ button:active {
     border-radius: 4px;
 
     transition:
+        top 0.9s ease,
         transform 0.9s ease,
-        top 0.9s ease;
+        width 0.9s ease,
+        height 0.9s ease;
 
-    z-index: 0;
+    z-index: 2;
 
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.12);
@@ -291,7 +294,6 @@ button:active {
 
     line-height: 1.5;
 }
-
 
 /* =========================
    AVANT DE L'ENVELOPPE
@@ -351,42 +353,90 @@ button:active {
    OUVERTURE EN 3 CLICS
 ========================= */
 
-/* 1er clic : seul le rabat s'ouvre */
+
+/* 1er clic :
+   uniquement le rabat s'ouvre */
 
 .envelope-container.step-1 .envelope-flap {
     transform: rotateX(180deg);
 }
 
+
+/* La lettre NE BOUGE PAS */
+
 .envelope-container.step-1 .letter {
-    top: 10px;
+    top: 100px;
     transform: translateY(0);
-    z-index: 0;
+    z-index: 2;
 }
 
 
-/* 2e clic : la lettre commence à sortir */
+/* 2e clic :
+   la lettre commence à sortir */
 
 .envelope-container.step-2 .envelope-flap {
     transform: rotateX(180deg);
 }
 
 .envelope-container.step-2 .letter {
-    top: -45px;
+    top: 25px;
     transform: translateY(0);
     z-index: 5;
 }
 
 
-/* 3e clic : la lettre sort complètement */
+/* 3e clic :
+   la lettre sort complètement */
 
 .envelope-container.step-3 .envelope-flap {
     transform: rotateX(180deg);
 }
 
 .envelope-container.step-3 .letter {
-    top: -105px;
+    top: -100px;
     transform: translateY(0);
     z-index: 5;
+}
+
+
+/* =========================
+   ANIMATION FINALE
+========================= */
+
+.envelope-container.final .envelope-back,
+.envelope-container.final .envelope-front,
+.envelope-container.final .envelope-flap {
+    opacity: 0;
+
+    transform: scale(0.8);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.envelope-container.final .letter {
+    top: 50%;
+
+    left: 5%;
+
+    width: 90%;
+
+    height: 70vh;
+
+    max-height: 600px;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+
+    transition:
+        top 1s ease,
+        left 1s ease,
+        width 1s ease,
+        height 1s ease,
+        transform 1s ease;
 }
 /* =========================
    TEXTE SOUS L'ENVELOPPE
