@@ -213,7 +213,7 @@ button:active {
     left: 6%;
     top: 10px;
 
-    padding: 25px 20px;
+    padding: 20px;
 
     background: #fff8f3;
 
@@ -229,6 +229,18 @@ button:active {
 
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+}
+
+.letter-content {
+    height: 100%;
+
+    overflow-y: auto;
+
+    padding-right: 8px;
+
+    scrollbar-width: thin;
 }
 
 .letter h2 {
@@ -236,11 +248,11 @@ button:active {
 
     font-weight: normal;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .letter p {
-    margin-top: 8px;
+    margin-top: 10px;
 
     color: #5a2531;
 
@@ -248,31 +260,6 @@ button:active {
 
     line-height: 1.5;
 }
-
-
-/* Avant de l'enveloppe */
-
-.envelope-front {
-    position: absolute;
-
-    bottom: 0;
-
-    width: 100%;
-    height: 55%;
-
-    background: #d89b91;
-
-    clip-path: polygon(
-        0 0,
-        50% 65%,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
-
-    z-index: 3;
-}
-
 
 /* Rabat */
 
@@ -303,15 +290,40 @@ button:active {
 
 /* Enveloppe ouverte */
 
-.envelope-container.open .envelope-flap {
+/* =========================
+   OUVERTURE EN 3 ÉTAPES
+========================= */
+
+/* Étape 1 */
+.envelope-container.step-1 .envelope-flap {
     transform: rotateX(180deg);
 }
 
-.envelope-container.open .letter {
-    top: -90px;
+.envelope-container.step-1 .letter {
+    top: -25px;
+    transform: translateY(-10px);
+}
 
+
+/* Étape 2 */
+.envelope-container.step-2 .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-container.step-2 .letter {
+    top: -60px;
+    transform: translateY(-15px);
+}
+
+
+/* Étape 3 */
+.envelope-container.step-3 .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-container.step-3 .letter {
+    top: -105px;
     transform: translateY(-20px);
-
     z-index: 5;
 }
 
