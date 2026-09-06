@@ -185,7 +185,7 @@ button:active {
 }
 
 
-/* Fond */
+/* Fond de l'enveloppe */
 
 .envelope-back {
     position: absolute;
@@ -199,10 +199,14 @@ button:active {
 
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.35);
+
+    z-index: 1;
 }
 
 
-/* Lettre */
+/* =========================
+   LETTRE
+========================= */
 
 .letter {
     position: absolute;
@@ -225,13 +229,16 @@ button:active {
         transform 0.9s ease,
         top 0.9s ease;
 
-    z-index: 1;
+    z-index: 2;
 
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.12);
 
     overflow: hidden;
 }
+
+
+/* Texte défilable */
 
 .letter-content {
     height: 100%;
@@ -241,7 +248,20 @@ button:active {
     padding-right: 8px;
 
     scrollbar-width: thin;
+
+    text-align: left;
 }
+
+.letter-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.letter-content::-webkit-scrollbar-thumb {
+    background: #d89b91;
+
+    border-radius: 10px;
+}
+
 
 .letter h2 {
     font-size: 24px;
@@ -249,6 +269,8 @@ button:active {
     font-weight: normal;
 
     margin-bottom: 15px;
+
+    text-align: center;
 }
 
 .letter p {
@@ -261,7 +283,36 @@ button:active {
     line-height: 1.5;
 }
 
-/* Rabat */
+
+/* =========================
+   AVANT DE L'ENVELOPPE
+========================= */
+
+.envelope-front {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+    height: 55%;
+
+    background: #d89b91;
+
+    clip-path: polygon(
+        0 0,
+        50% 65%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 3;
+}
+
+
+/* =========================
+   RABAT
+========================= */
 
 .envelope-flap {
     position: absolute;
@@ -288,47 +339,59 @@ button:active {
 }
 
 
-/* Enveloppe ouverte */
-
 /* =========================
-   OUVERTURE EN 3 ÉTAPES
+   OUVERTURE EN 3 CLICS
 ========================= */
 
-/* Étape 1 */
+
+/* 1er clic */
+
 .envelope-container.step-1 .envelope-flap {
-    transform: rotateX(180deg);
+    transform: rotateX(45deg);
 }
 
 .envelope-container.step-1 .letter {
-    top: -25px;
-    transform: translateY(-10px);
+    top: -20px;
+
+    transform: translateY(-5px);
+
+    z-index: 5;
 }
 
 
-/* Étape 2 */
+/* 2e clic */
+
 .envelope-container.step-2 .envelope-flap {
-    transform: rotateX(180deg);
+    transform: rotateX(110deg);
 }
 
 .envelope-container.step-2 .letter {
     top: -60px;
-    transform: translateY(-15px);
+
+    transform: translateY(-10px);
+
+    z-index: 5;
 }
 
 
-/* Étape 3 */
+/* 3e clic */
+
 .envelope-container.step-3 .envelope-flap {
     transform: rotateX(180deg);
 }
 
 .envelope-container.step-3 .letter {
     top: -105px;
+
     transform: translateY(-20px);
+
     z-index: 5;
 }
 
 
-/* Texte */
+/* =========================
+   TEXTE SOUS L'ENVELOPPE
+========================= */
 
 .click-text {
     margin-top: 55px;
@@ -340,7 +403,7 @@ button:active {
     transition: opacity 0.5s ease;
 }
 
-.envelope-container.open + .click-text {
+.envelope-container.step-3 + .click-text {
     opacity: 0;
 }
 
